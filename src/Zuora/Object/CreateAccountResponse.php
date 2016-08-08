@@ -5,16 +5,6 @@ namespace Zuora\Object;
 
 class CreateAccountResponse extends Object
 {
-    protected $success;
-    protected $accountId;
-    protected $accountNumber;
-    protected $paymentMethodId;
-    protected $subscriptionId;
-    protected $subscriptionNumber;
-    protected $contractedMrr;
-    protected $totalContractedValue;
-    protected $invoiceId;
-
     /**
      * @return mixed
      */
