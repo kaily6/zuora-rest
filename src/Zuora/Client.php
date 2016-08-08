@@ -241,6 +241,16 @@ class Client
     }
 
     /**
+     * @param $data array 
+     * @return Object\CreateAccountResponse
+     */
+    public function createAccount($data)
+    {
+        $response = $this->request('accounts', 'POST', array(), $data, array());
+        return new \Zuora\Object\CreateAccountResponse($response->getData());
+    }
+
+    /**
      * Retrieve HMAC signature and token
      *
      * @param string $path
@@ -257,9 +267,9 @@ class Client
     public function getHmacSignatures($path, $method, $fields = array())
     {
         $data = array(
-            'uri' => $this->getEnvironment()->getUrl($path),
-            'method' => $method
-        ) + $fields;
+                'uri' => $this->getEnvironment()->getUrl($path),
+                'method' => $method
+            ) + $fields;
 
         $response = $this->request('hmac-signatures', 'POST', array(), $data);
         return new \Zuora\Object\HmacSignature($response->getData());
@@ -292,7 +302,8 @@ class Client
      *
      * @return \Zuora\Object\ImportStatus
      */
-    public function getUsageImportStatus($id) {
+    public function getUsageImportStatus($id)
+    {
         $response = $this->request('usage/' . $id . '/status');
         return new \Zuora\Object\ImportStatus($response->getData());
     }
